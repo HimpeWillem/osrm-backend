@@ -130,7 +130,6 @@ class EdgeBasedGraphFactory
 
     //! list of edge based nodes (compressed segments)
     std::vector<EdgeBasedNode> m_edge_based_node_list;
-    EdgeBasedNodeDataExternalContainer m_ebg_node_data_container;
     util::DeallocatingVector<EdgeBasedEdge> m_edge_based_edge_list;
     EdgeID m_max_edge_id;
 
@@ -161,7 +160,9 @@ class EdgeBasedGraphFactory
                                    const std::string &turn_duration_penalties_filename,
                                    const std::string &turn_penalties_index_filename);
 
-    NBGToEBG InsertEdgeBasedNode(const NodeID u, const NodeID v);
+    NBGToEBG InsertEdgeBasedNode(const NodeID u,
+                                 const NodeID v,
+                                 EdgeBasedNodeDataExternalContainer &ebg_nodes_data);
 
     std::size_t restricted_turns_counter;
     std::size_t skipped_uturns_counter;
